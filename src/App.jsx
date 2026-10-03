@@ -5,7 +5,7 @@ const Header = (props) => {
 const Part = (props) => {
   return (
     <p>
-      {props.name} {props.units}
+      {props.part.name} {props.part.units}
     </p>
   )
 }
@@ -13,9 +13,9 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part name={props.part1} units={props.units1} />
-      <Part name={props.part2} units={props.units2} />
-      <Part name={props.part3} units={props.units3} />
+      <Part part={props.part1} />
+      <Part part={props.part2} />
+      <Part part={props.part3} />
     </div>
   )
 }
@@ -23,7 +23,8 @@ const Content = (props) => {
 const Total = (props) => {
   return (
     <p>
-      Total number of units: {props.units1 + props.units2 + props.units3}
+      Total number of units:
+      {' '}{props.part1.units + props.part2.units + props.part3.units}
     </p>
   )
 }
@@ -39,14 +40,20 @@ const Footer = (props) => {
 const App = () => {
   const course = 'Industry Elective 1'
 
-  const part1 = 'Applications Development and Emerging Technologies'
-  const units1 = 3
+  const part1 = {
+    name: 'Applications Development and Emerging Technologies',
+    units: 3
+  }
 
-  const part2 = 'Information Management 2'
-  const units2 = 3
+  const part2 = {
+    name: 'Information Management 2',
+    units: 3
+  }
 
-  const part3 = 'Data Analytics 1'
-  const units3 = 3
+  const part3 = {
+    name: 'Data Analytics 1',
+    units: 3
+  }
 
   const studentName = 'Jayross Versales'
   const courseCode = 'CSIT340'
@@ -58,17 +65,14 @@ const App = () => {
 
       <Content
         part1={part1}
-        units1={units1}
         part2={part2}
-        units2={units2}
         part3={part3}
-        units3={units3}
       />
 
       <Total
-        units1={units1}
-        units2={units2}
-        units3={units3}
+        part1={part1}
+        part2={part2}
+        part3={part3}
       />
 
       <Footer
